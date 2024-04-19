@@ -1,7 +1,10 @@
 package com.ucema.progra3.biblioteca.model;
 
+import jakarta.persistence.Entity;
+
 import java.time.LocalDate;
 
+@Entity
 public class Profesor extends Usuario {
 
     private LocalDate fechaIngreso;
@@ -9,6 +12,10 @@ public class Profesor extends Usuario {
     public Profesor(String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento, LocalDate fechaIngreso) {
         super(nombreCompleto, identificacion, dni, email, fechaNacimiento);
         this.fechaIngreso = fechaIngreso;
+    }
+
+    public Profesor() {
+
     }
 
     @Override

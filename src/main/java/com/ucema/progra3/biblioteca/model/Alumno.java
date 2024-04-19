@@ -1,7 +1,10 @@
 package com.ucema.progra3.biblioteca.model;
 
+import jakarta.persistence.Entity;
+
 import java.time.LocalDate;
 
+@Entity
 public class Alumno extends Usuario{
 
     private String carrera;
@@ -11,6 +14,10 @@ public class Alumno extends Usuario{
         super(nombreCompleto, identificacion, dni, email, fechaNacimiento);
         this.carrera = carrera;
         this.anio = anio;
+    }
+
+    public Alumno() {
+
     }
 
 

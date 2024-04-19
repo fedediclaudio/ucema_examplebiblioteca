@@ -1,16 +1,31 @@
 package com.ucema.progra3.biblioteca.model;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Libro {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
     private String isbn;
+
+    @Column(nullable = false, length = 100)
     private String titulo;
+
+    @Column(nullable = false)
     private String autor;
+
     private String editorial;
+
     private int anio;
 
+    @Transient
     private List<Prestamo> prestamos;
 
 
@@ -21,6 +36,10 @@ public class Libro {
         this.editorial = editorial;
         this.anio = anio;
         this.prestamos = new ArrayList<>();
+    }
+
+    public Libro() {
+
     }
 
     public String getIsbn() {
@@ -69,5 +88,13 @@ public class Libro {
 
     public void setPrestamos(List<Prestamo> prestamos) {
         this.prestamos = prestamos;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

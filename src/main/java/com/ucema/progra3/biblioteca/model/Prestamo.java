@@ -1,18 +1,37 @@
 package com.ucema.progra3.biblioteca.model;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
 public class Prestamo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private LocalDate fechaSolicitud;
     private LocalDate fechaDevolucion;
+
+    @Transient
     private Usuario usuario;
-    private Libro libro;
+
+    @Transient
+    private List<Libro> libros;
+
 
     public Prestamo(LocalDate fechaSolicitud, Usuario usuario, Libro libro) {
         this.fechaSolicitud = fechaSolicitud;
         this.usuario = usuario;
         this.fechaDevolucion = usuario.calcularFechaDevolucion(fechaSolicitud);
-        this.libro = libro;
+        this.libros = new ArrayList<>();
+    }
+
+    public Prestamo() {
+
     }
 
     public LocalDate getFechaSolicitud() {
@@ -39,11 +58,19 @@ public class Prestamo {
         this.usuario = usuario;
     }
 
-    public Libro getLibro() {
-        return libro;
+    public List<Libro> getLibros() {
+        return libros;
     }
 
-    public void setLibro(Libro libro) {
-        this.libro = libro;
+    public void setLibro(List<Libro> libro) {
+        this.libros = libro;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
