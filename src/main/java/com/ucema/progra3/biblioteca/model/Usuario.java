@@ -19,7 +19,7 @@ public abstract class Usuario {
     private String email;
     private LocalDate fechaNacimiento;
 
-    @Transient
+    @OneToMany(mappedBy = "usuario")
     private List<Prestamo> prestamos;
 
 

@@ -16,10 +16,16 @@ public class Prestamo {
     private LocalDate fechaSolicitud;
     private LocalDate fechaDevolucion;
 
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-    @Transient
+    @ManyToMany
+    @JoinTable(
+            name = "prestamo_libro",
+            joinColumns = @JoinColumn(name = "id_prestamo"),
+            inverseJoinColumns = @JoinColumn(name = "id_libro")
+    )
     private List<Libro> libros;
 
 

@@ -25,7 +25,7 @@ public class Libro {
 
     private int anio;
 
-    @Transient
+    @ManyToMany(mappedBy = "libros")
     private List<Prestamo> prestamos;
 
 
