@@ -1,18 +1,16 @@
 package com.ucema.progra3.biblioteca.model;
 
-import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Libro {
+
     private String isbn;
     private String titulo;
     private String autor;
     private String editorial;
     private int anio;
 
-    @Transient
     private List<Prestamo> prestamos;
 
 
@@ -23,10 +21,6 @@ public class Libro {
         this.editorial = editorial;
         this.anio = anio;
         this.prestamos = new ArrayList<>();
-    }
-
-    public Libro() {
-
     }
 
     public String getIsbn() {
