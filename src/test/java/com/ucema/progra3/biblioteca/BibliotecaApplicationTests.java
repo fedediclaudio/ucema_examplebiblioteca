@@ -10,4 +10,9 @@ class BibliotecaApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void init(){
+
+	}
+
 }
