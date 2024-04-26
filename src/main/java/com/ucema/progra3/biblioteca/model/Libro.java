@@ -25,6 +25,10 @@ public class Libro {
 
     private int anio;
 
+
+
+    private String estado;
+
     @ManyToMany(mappedBy = "libros")
     private List<Prestamo> prestamos;
 
@@ -35,6 +39,7 @@ public class Libro {
         this.autor = autor;
         this.editorial = editorial;
         this.anio = anio;
+        this.estado = "Disponible";
         this.prestamos = new ArrayList<>();
     }
 
@@ -93,8 +98,19 @@ public class Libro {
     public void setId(Long id) {
         this.id = id;
     }
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
     public Long getId() {
         return id;
+    }
+
+    public boolean sinPrestamos() {
+        return this.prestamos.isEmpty();
     }
 }

@@ -1,5 +1,6 @@
 package com.ucema.progra3.biblioteca.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 import java.time.LocalDate;
@@ -7,7 +8,10 @@ import java.time.LocalDate;
 @Entity
 public class Alumno extends Usuario{
 
+    @Column(nullable = false)
     private String carrera;
+
+    @Column(nullable = false)
     private String anio;
 
     public Alumno(String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento, String carrera, String anio) {

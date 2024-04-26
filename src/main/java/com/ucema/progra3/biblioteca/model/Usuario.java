@@ -13,10 +13,19 @@ public abstract class Usuario {
     @Id
     private Long id;
 
+    @Column(name = "nombre_completo", nullable = false)
     private String nombreCompleto;
+
+    @Column(nullable = false, length = 100)
     private String identificacion;
+
+    @Column(nullable = false, length = 15, unique = true)
     private String dni;
+
+    @Column(length = 100)
     private String email;
+
+    @Column(name = "fecha_nacimiento")
     private LocalDate fechaNacimiento;
 
     @OneToMany(mappedBy = "usuario")
@@ -92,5 +101,9 @@ public abstract class Usuario {
 
     public Long getId() {
         return id;
+    }
+
+    public boolean tienePrestamos() {
+        return !this.prestamos.isEmpty();
     }
 }

@@ -13,8 +13,13 @@ public class Prestamo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, name = "fecha_solicitud")
     private LocalDate fechaSolicitud;
+
+    @Column(name = "fecha_devolucion", nullable = false)
     private LocalDate fechaDevolucion;
+
+    private boolean devuelto;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
@@ -29,11 +34,12 @@ public class Prestamo {
     private List<Libro> libros;
 
 
-    public Prestamo(LocalDate fechaSolicitud, Usuario usuario, Libro libro) {
+    public Prestamo(LocalDate fechaSolicitud, LocalDate fechaDevolucion, Usuario usuario, List<Libro> libros) {
         this.fechaSolicitud = fechaSolicitud;
         this.usuario = usuario;
-        this.fechaDevolucion = usuario.calcularFechaDevolucion(fechaSolicitud);
-        this.libros = new ArrayList<>();
+        this.fechaDevolucion = fechaDevolucion;
+        this.devuelto = false;
+        this.libros = libros;
     }
 
     public Prestamo() {
@@ -66,6 +72,18 @@ public class Prestamo {
 
     public List<Libro> getLibros() {
         return libros;
+    }
+
+    public boolean isDevuelto() {
+        return devuelto;
+    }
+
+    public void setDevuelto(boolean devuelto) {
+        this.devuelto = devuelto;
+    }
+
+    public void setLibros(List<Libro> libros) {
+        this.libros = libros;
     }
 
     public void setLibro(List<Libro> libro) {
