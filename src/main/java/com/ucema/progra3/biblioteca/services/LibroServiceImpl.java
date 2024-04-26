@@ -17,8 +17,7 @@ public class LibroServiceImpl implements LibroService{
 
     @Override
     @Transactional
-    public Libro createLibro(String isbn, String titulo, String autor, String editorial, int anio) {
-        Libro libro = new Libro(isbn, titulo, autor, editorial, anio);
+    public Libro createLibro(Libro libro) {
         this.libroRepository.save(libro);
         return libro;
     }
@@ -65,5 +64,10 @@ public class LibroServiceImpl implements LibroService{
     @Transactional(readOnly = true)
     public Libro getLibroMasPrestado() {
         return this.libroRepository.findTopByOrderByPrestamosDesc();
+    }
+
+    @Override
+    public Optional<Libro> getById(Long id) {
+        return this.libroRepository.findById(id);
     }
 }

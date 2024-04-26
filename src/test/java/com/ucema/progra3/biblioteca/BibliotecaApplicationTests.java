@@ -27,10 +27,10 @@ class BibliotecaApplicationTests {
 
 	@Test
 	void createAndGetLibroTest() {
-		Libro libro1 = this.libroService.createLibro("0000001111", "Cien años de soledad", "Garcia Marquez", "una editorial", 1982);
+		Libro libro1 = new Libro("0000001111", "Cien años de soledad", "Garcia Marquez", "una editorial", 1982);
 		Assert.notNull(libro1.getId(), "No se ha asignado un id");
 
-		Libro libro2 = this.libroService.createLibro("0000001112", "1984", "George Orwell", "una editorial", 1949);
+		Libro libro2 = new Libro("0000001112", "1984", "George Orwell", "una editorial", 1949);
 
 		List<Libro> list1 = this.libroService.getAll();
 		Assert.isTrue(list1.size() == 2, "No se han obtenido los libros correctamente");

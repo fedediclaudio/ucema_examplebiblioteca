@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface LibroService {
 
-    Libro createLibro(String isbn, String titulo, String autor, String editorial, int anio);
+    Libro createLibro(Libro libro);
 
     Libro updateLibro(Libro libro);
 
@@ -20,4 +20,6 @@ public interface LibroService {
     Optional<Libro> getByIsbn(String isbn);
 
     Libro getLibroMasPrestado();
+
+    Optional<Libro> getById(Long id);
 }

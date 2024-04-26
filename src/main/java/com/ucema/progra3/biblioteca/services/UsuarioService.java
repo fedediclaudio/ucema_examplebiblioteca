@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public interface UsuarioService {
 
-    Alumno createAlumno(String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento, String carrera, String anio);
+    Alumno createAlumno(Alumno alumno);
 
-    Profesor createProfesor(String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento, LocalDate fechaIngreso);
+    Profesor createProfesor(Profesor profesor);
 
     Usuario updateUsuario(Usuario usuario);
 

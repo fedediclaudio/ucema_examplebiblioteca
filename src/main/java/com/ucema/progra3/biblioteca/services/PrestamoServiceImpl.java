@@ -6,11 +6,13 @@ import com.ucema.progra3.biblioteca.model.Usuario;
 import com.ucema.progra3.biblioteca.repositories.LibroRepository;
 import com.ucema.progra3.biblioteca.repositories.PrestamoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class PrestamoServiceImpl implements PrestamoService{
 
     @Autowired
@@ -46,7 +48,7 @@ public class PrestamoServiceImpl implements PrestamoService{
 
     @Override
     @Transactional(readOnly = true)
-    public Prestamo getPrestamoByUsuario(String nombre) {
+    public List<Prestamo> getPrestamoByUsuario(String nombre) {
         return this.prestamoRepository.findByUsuario_NombreCompleto(nombre);
     }
 

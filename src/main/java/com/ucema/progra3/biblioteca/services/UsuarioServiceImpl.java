@@ -5,24 +5,24 @@ import com.ucema.progra3.biblioteca.model.Profesor;
 import com.ucema.progra3.biblioteca.model.Usuario;
 import com.ucema.progra3.biblioteca.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Optional;
 
+@Service
 public class UsuarioServiceImpl implements UsuarioService{
 
     @Autowired
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public Alumno createAlumno(String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento, String carrera, String anio) {
-        Alumno alumno = new Alumno(nombreCompleto, identificacion, dni, email, fechaNacimiento, carrera, anio);
+    public Alumno createAlumno(Alumno alumno) {
         return usuarioRepository.save(alumno);
     }
 
     @Override
-    public Profesor createProfesor(String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento, LocalDate fechaIngreso) {
-        Profesor profesor = new Profesor(nombreCompleto, identificacion, dni, email, fechaNacimiento, fechaIngreso);
+    public Profesor createProfesor(Profesor profesor) {
         return usuarioRepository.save(profesor);
     }
 

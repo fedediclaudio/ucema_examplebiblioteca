@@ -2,7 +2,6 @@ package com.ucema.progra3.biblioteca.repositories;
 
 import com.ucema.progra3.biblioteca.model.Prestamo;
 import com.ucema.progra3.biblioteca.model.Usuario;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -22,5 +21,5 @@ public interface PrestamoRepository extends CrudRepository<Prestamo, Long> {
 
     List<Prestamo> findByFechaSolicitudBetween(LocalDate fechaInicial, LocalDate fechaFinal);
 
-    Prestamo findByUsuario_NombreCompleto(String nombre);
+    List<Prestamo> findByUsuario_NombreCompleto(String nombre);
 }

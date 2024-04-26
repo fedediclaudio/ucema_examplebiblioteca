@@ -13,10 +13,9 @@ public interface PrestamoService {
 
     Prestamo updatePrestamo(Prestamo prestamo);
 
-
     Prestamo getPrestamoById(Long id);
 
-    Prestamo getPrestamoByUsuario(String nombre);
+    List<Prestamo> getPrestamoByUsuario(String nombre);
 
     List<Prestamo> getPrestamoADevolverEn10Dias();
 
