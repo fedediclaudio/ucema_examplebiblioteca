@@ -45,8 +45,6 @@ public class LibroController {
         return libroService.getByTitulo(titulo);
     }
 
-    @GetMapping()
-
     @GetMapping(value = "/isbn/{isbn}")
     public Libro getByIsbn(@PathVariable String isbn) {
         return libroService.getByIsbn(isbn).orElse(null);
