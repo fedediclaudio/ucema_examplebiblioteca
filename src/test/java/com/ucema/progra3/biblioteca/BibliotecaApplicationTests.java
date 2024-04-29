@@ -25,6 +25,12 @@ class BibliotecaApplicationTests {
 
 	}
 
+	/**
+	 * Pueden utilizarse los tests para probar el funcionamiento de los métodos de la clase LibroService
+	 * La clase LibroService es inyectada en esta clase de test y puede probarse sus metodos
+	 * Se añade un test de ejemplo de como utilizarlo.
+	 */
+
 	@Test
 	void createAndGetLibroTest() {
 		Libro libro1 = new Libro("0000001111", "Cien años de soledad", "Garcia Marquez", "una editorial", 1982);

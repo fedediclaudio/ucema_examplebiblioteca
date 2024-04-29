@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Debido a la poca agregación de atributos entre las clases hijas, se optó por utilizar SINGLE_TABLE
 public abstract class Usuario {
 
     @Id
@@ -25,7 +25,7 @@ public abstract class Usuario {
     @Column(length = 100)
     private String email;
 
-    @Column(name = "fecha_nacimiento")
+    @Column(name = "fecha_nacimiento") // Notar que redefinimos el nombre para seguir la convención de nombres de columnas en SQL
     private LocalDate fechaNacimiento;
 
     @OneToMany(mappedBy = "usuario")

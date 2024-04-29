@@ -23,6 +23,9 @@ public class PrestamoServiceImpl implements PrestamoService{
 
     @Override
     @Transactional
+    /**
+     * Notar que en este caso existe una logica de aplicación a implementar en el SERVICIO
+     */
     public Prestamo createPrestamo(LocalDate fechaSolicitud, Usuario usuario, List<Libro> libros) {
         LocalDate fechaDevolucion = usuario.calcularFechaDevolucion(fechaSolicitud);
         Prestamo prestamo = new Prestamo(fechaSolicitud, fechaDevolucion, usuario, libros);
