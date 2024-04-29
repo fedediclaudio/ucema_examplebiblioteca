@@ -10,6 +10,12 @@ import java.util.Optional;
 @Repository
 public interface LibroRepository extends CrudRepository<Libro, Long> {
 
+    /**
+     * Algunos metodos de ejemplos...
+     * Notar que no es necesario generar una implementación, Spring Data JPA los implementa por nosotros
+     * Segun el nombre del metodo, Spring Data JPA genera la consulta SQL correspondiente
+     */
+
     Optional<Libro> findByIsbn(String isbn);
 
     List<Libro> findByAutor(String autor);
