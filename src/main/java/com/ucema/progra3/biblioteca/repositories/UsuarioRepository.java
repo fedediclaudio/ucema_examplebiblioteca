@@ -22,4 +22,6 @@ public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
     List<Prestamo> getUsuariosOrdenadosPorCantidadDeLibrosPedidos();
 
     Optional<Usuario> findByDni(String dni);
+
+    Optional<Usuario> findByUsername(String username);
 }

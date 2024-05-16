@@ -5,6 +5,7 @@ import com.ucema.progra3.biblioteca.model.Profesor;
 import com.ucema.progra3.biblioteca.model.Usuario;
 import com.ucema.progra3.biblioteca.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,15 +18,20 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     @Transactional
     public Alumno createAlumno(Alumno alumno) {
+        alumno.setPassword(passwordEncoder.encode(alumno.getPassword()));
         return usuarioRepository.save(alumno);
     }
 
     @Override
     @Transactional
     public Profesor createProfesor(Profesor profesor) {
+        profesor.setPassword(passwordEncoder.encode(profesor.getPassword()));
         return usuarioRepository.save(profesor);
     }
 

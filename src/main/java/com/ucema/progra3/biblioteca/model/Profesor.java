@@ -8,11 +8,11 @@ import java.time.LocalDate;
 @Entity
 public class Profesor extends Usuario {
 
-    @Column(name = "fecha_ingreso", nullable = false)
+    @Column(name = "fecha_ingreso")
     private LocalDate fechaIngreso;
 
-    public Profesor(String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento, LocalDate fechaIngreso) {
-        super(nombreCompleto, identificacion, dni, email, fechaNacimiento);
+    public Profesor(String username, String password, String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento, LocalDate fechaIngreso) {
+        super(username, password, nombreCompleto, identificacion, dni, email, fechaNacimiento);
         this.fechaIngreso = fechaIngreso;
     }
 

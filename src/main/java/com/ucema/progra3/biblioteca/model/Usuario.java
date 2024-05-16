@@ -11,7 +11,15 @@ import java.util.List;
 public abstract class Usuario {
 
     @Id
+    @Column(name = "id_usuario")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, length = 50, unique = true)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
 
     @Column(name = "nombre_completo", nullable = false)
     private String nombreCompleto;
@@ -32,7 +40,9 @@ public abstract class Usuario {
     private List<Prestamo> prestamos;
 
 
-    public Usuario(String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento) {
+    public Usuario(String username, String password, String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento) {
+        this.username = username;
+        this.password = password;
         this.nombreCompleto = nombreCompleto;
         this.identificacion = identificacion;
         this.dni = dni;
@@ -105,5 +115,21 @@ public abstract class Usuario {
 
     public boolean tienePrestamos() {
         return !this.prestamos.isEmpty();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

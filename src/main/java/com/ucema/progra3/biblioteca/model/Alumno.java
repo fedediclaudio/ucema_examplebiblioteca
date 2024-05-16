@@ -8,14 +8,14 @@ import java.time.LocalDate;
 @Entity
 public class Alumno extends Usuario{
 
-    @Column(nullable = false)
+    @Column()
     private String carrera;
 
-    @Column(nullable = false)
+    @Column()
     private String anio;
 
-    public Alumno(String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento, String carrera, String anio) {
-        super(nombreCompleto, identificacion, dni, email, fechaNacimiento);
+    public Alumno(String username, String password, String nombreCompleto, String identificacion, String dni, String email, LocalDate fechaNacimiento, String carrera, String anio) {
+        super(username, password, nombreCompleto, identificacion, dni, email, fechaNacimiento);
         this.carrera = carrera;
         this.anio = anio;
     }
