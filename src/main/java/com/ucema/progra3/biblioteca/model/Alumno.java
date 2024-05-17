@@ -78,4 +78,9 @@ public class Alumno extends Usuario{
         authorities.add(new SimpleGrantedAuthority("ALUMNO"));
         return authorities;
     }
+
+    @Override
+    public String getRole() {
+        return "ALUMNO";
+    }
 }

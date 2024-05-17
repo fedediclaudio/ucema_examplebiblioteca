@@ -17,4 +17,7 @@ public interface UsuarioService {
 
     Optional<Usuario> getByDni(String dni);
 
+    String authenticate(String username, String password);
+
+    Usuario getUserInfo();
 }

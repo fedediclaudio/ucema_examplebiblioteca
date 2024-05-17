@@ -45,4 +45,12 @@ public class UsuarioController {
         return usuarioService.getByDni(dni).orElse(null);
     }
 
+    /**
+     * Endpoint para obtener la información del usuario logueado mediante jwt
+     */
+    @GetMapping(value = "/info")
+    public Usuario getUserInfo() {
+        return usuarioService.getUserInfo();
+    }
+
 }

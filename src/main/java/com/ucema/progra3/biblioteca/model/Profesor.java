@@ -30,6 +30,11 @@ public class Profesor extends Usuario {
         return date.plusDays(90);
     }
 
+    @Override
+    public String getRole() {
+        return "PROFESOR";
+    }
+
     public LocalDate getFechaIngreso() {
         return fechaIngreso;
     }
@@ -64,4 +69,5 @@ public class Profesor extends Usuario {
         authorities.add(new SimpleGrantedAuthority("PROFESOR"));
         return authorities;
     }
+
 }
