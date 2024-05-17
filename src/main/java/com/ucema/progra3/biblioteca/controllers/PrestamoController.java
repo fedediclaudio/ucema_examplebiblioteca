@@ -28,7 +28,7 @@ public class PrestamoController {
         return prestamoService.updatePrestamo(prestamo);
     }
 
-    // DELETE ../api/prestamo
+    // GET ../api/prestamo/{id}
     @GetMapping(value = "/{id}")
     public Prestamo getPrestamoById(@PathVariable Long id) {
         return prestamoService.getPrestamoById(id);

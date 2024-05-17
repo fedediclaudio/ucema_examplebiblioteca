@@ -28,6 +28,7 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(HttpMethod.GET, "api/libro/**").permitAll() // Permitir a todos los usuarios hacer consultas sobre los libros
                         .requestMatchers("api/libro/**").authenticated() // Solo los usuarios autenticados pueden hacer cambios en los libros
+                        .requestMatchers("api/prestamo/**").hasAuthority("PROFESOR") // Solo los profesores pueden acceder los préstamos
                         .anyRequest().authenticated() // Cualquier otra solicitud debe ser autenticada
                 )
                 .httpBasic(Customizer.withDefaults()) // Usar autenticación HTTP básica

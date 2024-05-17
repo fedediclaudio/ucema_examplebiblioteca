@@ -1,14 +1,18 @@
 package com.ucema.progra3.biblioteca.model;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Debido a la poca agregación de atributos entre las clases hijas, se optó por utilizar SINGLE_TABLE
-public abstract class Usuario {
+public abstract class Usuario implements UserDetails {
 
     @Id
     @Column(name = "id_usuario")
@@ -117,6 +121,7 @@ public abstract class Usuario {
         return !this.prestamos.isEmpty();
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
@@ -124,6 +129,7 @@ public abstract class Usuario {
     public void setUsername(String username) {
         this.username = username;
     }
+
 
     public String getPassword() {
         return password;

@@ -24,15 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("Usuario no encontrado");
         } else {
             Usuario usuario = optionalUsuario.get();
-            return User.withUsername(
-                    usuario.getUsername())
-                    .password(usuario.getPassword())
-                    .authorities("USER")
-                    .accountExpired(false)
-                    .accountLocked(false)
-                    .credentialsExpired(false)
-                    .disabled(false)
-                    .build();
+            return usuario;
         }
     }
 }
