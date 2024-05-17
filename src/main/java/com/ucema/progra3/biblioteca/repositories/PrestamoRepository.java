@@ -22,4 +22,6 @@ public interface PrestamoRepository extends CrudRepository<Prestamo, Long> {
     List<Prestamo> findByFechaSolicitudBetween(LocalDate fechaInicial, LocalDate fechaFinal);
 
     List<Prestamo> findByUsuario_NombreCompleto(String nombre);
+
+    List<Prestamo> findByUsuario_Username(String username);
 }

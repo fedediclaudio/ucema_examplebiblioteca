@@ -21,4 +21,5 @@ public interface PrestamoService {
 
     void registarDevolucion(Prestamo prestamo);
 
+    List<Prestamo> getPrestamosUser();
 }

@@ -6,6 +6,8 @@ import com.ucema.progra3.biblioteca.model.Usuario;
 import com.ucema.progra3.biblioteca.repositories.LibroRepository;
 import com.ucema.progra3.biblioteca.repositories.PrestamoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -70,5 +72,17 @@ public class PrestamoServiceImpl implements PrestamoService{
         }
         prestamo.setDevuelto(true);
         this.prestamoRepository.save(prestamo);
+    }
+
+    @Override
+    public List<Prestamo> getPrestamosUser() {
+        // Obtengo el usuario autenticado desde el contexto de Spring Security
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return null;
+        }
+        Usuario usuario = (Usuario) authentication.getPrincipal(); //Obtengo el usuario autenticado
+        String name = authentication.getName(); //Obtengo el nombre del usuario autenticado
+        return this.prestamoRepository.findByUsuario_Username(usuario.getUsername());
     }
 }

@@ -52,4 +52,13 @@ public class PrestamoController {
         prestamoService.registarDevolucion(prestamo);
     }
 
+    /**
+     * Enpoint de ejemplo de uso de Spring Context Security
+     * Obtener los prestamos de un usuario logueado
+     */
+    @GetMapping(value = "/misprestamos")
+    public List<Prestamo> getMisPrestamos() {
+        return prestamoService.getPrestamosUser();
+    }
+
 }
