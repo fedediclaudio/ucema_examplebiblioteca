@@ -5,6 +5,8 @@ import com.ucema.progra3.biblioteca.model.Profesor;
 import com.ucema.progra3.biblioteca.model.Usuario;
 import com.ucema.progra3.biblioteca.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,5 +60,27 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public Optional<Usuario> getByDni(String dni) {
         return this.usuarioRepository.findByDni(dni);
+    }
+
+    @Override
+    public Usuario getUserInfo() {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+            if (authentication == null || !authentication.isAuthenticated()) {
+                return null;
+            }
+
+            Usuario usuario = (Usuario) authentication.getPrincipal();
+            return usuario; //Obtengo el usuario autenticado
+
+    }
+
+    @Override
+    public boolean checkLogin(String username, String password) {
+        Optional<Usuario> usuario = usuarioRepository.findByUsername(username);
+        if(usuario.isPresent()) {
+            return passwordEncoder.matches(password, usuario.get().getPassword());
+        }
+        return false;
     }
 }

@@ -17,4 +17,7 @@ public interface UsuarioService {
 
     Optional<Usuario> getByDni(String dni);
 
+    Usuario getUserInfo();
+
+    boolean checkLogin(String username, String password);
 }

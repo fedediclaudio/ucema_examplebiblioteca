@@ -15,6 +15,12 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    // GET ../api/usuario
+    @GetMapping(value = "")
+    public Usuario getUserInfo() {
+        return this.usuarioService.getUserInfo();
+    }
+
     // POST ../api/usuario/alumno
     @PostMapping(value = "/alumno")
     public Usuario createAlumno(@RequestBody Alumno usuario) {

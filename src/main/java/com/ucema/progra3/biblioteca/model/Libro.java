@@ -1,5 +1,6 @@
 package com.ucema.progra3.biblioteca.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class Libro {
     private String estado;
 
     @ManyToMany(mappedBy = "libros")
+    @JsonIgnore
     private List<Prestamo> prestamos;
 
 

@@ -1,5 +1,6 @@
 package com.ucema.progra3.biblioteca.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -41,6 +42,7 @@ public abstract class Usuario implements UserDetails {
     private LocalDate fechaNacimiento;
 
     @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
     private List<Prestamo> prestamos;
 
 

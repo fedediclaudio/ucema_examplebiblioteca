@@ -32,7 +32,7 @@ public class Alumno extends Usuario{
 
     @Override
     public LocalDate calcularFechaDevolucion(LocalDate date) {
-        return null;
+        return date.plusDays(30);
     }
 
     public String getCarrera() {

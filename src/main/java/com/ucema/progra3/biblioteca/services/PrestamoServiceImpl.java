@@ -76,13 +76,18 @@ public class PrestamoServiceImpl implements PrestamoService{
 
     @Override
     public List<Prestamo> getPrestamosUser() {
+
         // Obtengo el usuario autenticado desde el contexto de Spring Security
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         if (authentication == null || !authentication.isAuthenticated()) {
             return null;
         }
+
         Usuario usuario = (Usuario) authentication.getPrincipal(); //Obtengo el usuario autenticado
         String name = authentication.getName(); //Obtengo el nombre del usuario autenticado
+
+
         return this.prestamoRepository.findByUsuario_Username(usuario.getUsername());
     }
 }
